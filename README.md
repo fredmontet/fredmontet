@@ -1,16 +1,14 @@
 ### Hi there 👋
 
-<!--
-**fredmontet/fredmontet** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Have a nice time browsing my repos and if you have any questions, just contact me for a chat!
 
-Here are some ideas to get you started:
+Here are a few things about me : 
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+- 🔭 I’m working on solutions to lower building energy consumptions
+- 🤔 I’m looking for contributor in web development and data science
+- 💬 Ask me about data science for good
+- 📫 Reach me by email
+- 😄 Pronouns: He/him
+- ⚡ Fun fact: I made a crypto trading bot
+
+Fred
