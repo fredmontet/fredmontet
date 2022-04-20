@@ -1,6 +1,10 @@
 ### Hi there 👋
 
-Have a nice time browsing my repos and if you have any questions, just contact me for a chat! Here are a few things about me : 
+Have a nice time browsing my repos 
+and if you have any questions, just 
+contact me for a chat! 
+
+Here are a few things about me : 
 
 - 🔭 I’m working on solutions to lower building energy consumptions
 - 🤔 I’m looking for contributor in web development and data science
