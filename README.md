@@ -13,6 +13,5 @@ Here are a few things about me :
 - 😄 Pronouns: He/him
 - ⚡ Fun fact: I made a crypto trading bot (very nerdy!)
 
-
----
+___
 Fred
