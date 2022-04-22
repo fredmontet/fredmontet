@@ -1,4 +1,4 @@
-### Hi there 👋
+### Hi there <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="25px">
 
 Have a nice time browsing my repos 
 and if you have any questions, just 
@@ -13,5 +13,4 @@ Here are a few things about me :
 - 😄 Pronouns: He/him
 - ⚡ Fun fact: I made a crypto trading bot (very nerdy!)
 
-___
-Fred
+
