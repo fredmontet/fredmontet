@@ -6,9 +6,7 @@ listing:
   type: default
   sort: "date desc"
   fields: [title, date]
-  max-items: 3
-  exclude:
-      categories: ["thought"]
+  max-items: 4
 ---
 
 ::: {.hero}
