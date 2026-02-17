@@ -68,7 +68,39 @@ document.getElementById('subscribe-form').addEventListener('submit', function(e)
 
 ## Writing {#writing}
 
-{{< include _generated/latest_note.qmd >}}
+<div id="substack-note"></div>
+
+<script>
+(function() {
+  var API = "https://substack.com/api/v1/reader/feed/profile/186540262?limit=1";
+  var HANDLE = "fredmontet";
+
+  fetch(API)
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var items = data.items || [];
+      if (!items.length) return;
+      var item = items[0];
+      var comment = item.comment || {};
+      var body = comment.body || "";
+      if (!body) return;
+      var noteId = item.entity_key || "";
+      var ts = (item.context || {}).timestamp || "";
+      var dateFmt = "";
+      if (ts) {
+        var d = new Date(ts);
+        dateFmt = d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+      }
+      var url = "https://substack.com/@" + HANDLE + "/note/" + noteId;
+      var el = document.getElementById("substack-note");
+      el.innerHTML =
+        '<div class="thought"><p>' + body + '</p>' +
+        '<p>— <a href="' + url + '">Substack Notes</a>' +
+        (dateFmt ? ' · ' + dateFmt : '') + '</p></div>';
+    })
+    .catch(function() {});
+})();
+</script>
 
 ### Latest Stories
 
