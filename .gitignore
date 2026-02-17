@@ -20,4 +20,5 @@ build/
 .env.local
 
 /.quarto/
+_generated/
 **/*.quarto_ipynb

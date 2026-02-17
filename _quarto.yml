@@ -1,6 +1,8 @@
 project:
   type: website
   execute-dir: file
+  pre-render:
+    - scripts/fetch_substack_note.py
 
 execute:
   python: .venv/bin/python

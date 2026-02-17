@@ -68,6 +68,8 @@ document.getElementById('subscribe-form').addEventListener('submit', function(e)
 
 ## Writing {#writing}
 
+{{< include _generated/latest_note.qmd >}}
+
 ### Latest Stories
 
 ::: {#all-stories}
