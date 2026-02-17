@@ -1,4 +1,6 @@
 # .gitignore for Python projects
+
+## Python
 .venv/
 venv/
 ENV/
@@ -8,17 +10,20 @@ __pycache__/
 *.pyo
 *.pyd
 .Python
-.DS_Store
-.quarto/
-_site/
 *.egg-info/
 dist/
 build/
+
+## Quarto
+.quarto/
+_site/
 .pytest_cache/
 .coverage
 .env
 .env.local
-
 /.quarto/
 _generated/
 **/*.quarto_ipynb
+
+## Other
+.DS_Store
