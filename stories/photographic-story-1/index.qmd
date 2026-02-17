@@ -1,10 +1,11 @@
 ---
 title: "A Visual Story"
 date: 2024-01-08
-categories: ['pictures']
+categories: ['research']
 lightbox: true
 bibliography: references.bib
 ---
+
 
 ## A Visual Story
 

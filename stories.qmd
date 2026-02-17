@@ -13,6 +13,4 @@ listing:
     date-format: "medium"
     grid-columns: 2
     grid-item-border: true
-    exclude:
-        categories: ["thought"]
 ---
