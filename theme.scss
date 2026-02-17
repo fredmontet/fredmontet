@@ -1,0 +1,981 @@
+/*-- scss:defaults --*/
+
+// ============================================================
+// FONTS
+// Source Serif 4 for editorial headings, Inter for clean body.
+// A serif/sans pairing like the NYT — confident, readable, warm.
+// ============================================================
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap');
+
+$web-font-path: false;
+
+// ============================================================
+// PALETTE
+// ============================================================
+$white:    #FFFFFF;
+$gray-100: #F7F7F5;
+$gray-200: #EDEDEB;
+$gray-300: #DDDBD8;
+$gray-400: #B8B5B0;
+$gray-500: #8A8885;
+$gray-600: #6B6966;
+$gray-700: #4A4845;
+$gray-800: #2C2A27;
+$gray-900: #1A1917;
+$black:    #111110;
+
+$accent:      #1A1917;
+$accent-hover: #4A4845;
+
+$primary:   $gray-900;
+$secondary: $gray-600;
+$light:     $gray-100;
+$dark:      $gray-900;
+
+// ============================================================
+// BODY
+// ============================================================
+$body-bg:    $white;
+$body-color: $gray-900;
+
+// ============================================================
+// TYPOGRAPHY
+// ============================================================
+$font-family-sans-serif: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+$font-family-serif:      'Source Serif 4', Georgia, "Times New Roman", serif;
+$font-family-monospace:  'JetBrains Mono', SFMono-Regular, Menlo, Monaco, monospace;
+
+$font-size-base: 1.0625rem;
+$line-height-base: 1.65;
+
+$headings-font-family: $font-family-serif;
+$headings-font-weight: 600;
+$headings-line-height: 1.2;
+$headings-color:       $black;
+
+$h1-font-size: 2.5rem;
+$h2-font-size: 1.6rem;
+$h3-font-size: 1.25rem;
+$h4-font-size: 1.1rem;
+$h5-font-size: 1rem;
+$h6-font-size: 0.85rem;
+
+$lead-font-size:   1.15rem;
+$lead-font-weight: 400;
+
+// ============================================================
+// LINKS
+// ============================================================
+$link-color:      $gray-900;
+$link-decoration: underline;
+$link-hover-color: $gray-600;
+
+// ============================================================
+// NAVBAR
+// ============================================================
+$navbar-bg: $white;
+$navbar-fg: $gray-900;
+
+// ============================================================
+// CARDS
+// ============================================================
+$card-border-color:  $gray-300;
+$card-bg:            $white;
+$card-border-radius: 0;
+$card-spacer-y:      1rem;
+$card-spacer-x:      1rem;
+
+// ============================================================
+// CODE
+// ============================================================
+$code-color: $gray-800;
+$code-bg:    $gray-100;
+
+// ============================================================
+// BLOCKQUOTES
+// ============================================================
+$blockquote-font-size: 1.1rem;
+
+// ============================================================
+// BORDERS & HR
+// ============================================================
+$border-color: $gray-300;
+$hr-color:     $gray-900;
+$hr-opacity:   1;
+$radius:       0.5rem;
+
+// ============================================================
+// TOC
+// ============================================================
+$toc-color:           $gray-600;
+$toc-active-border:   $gray-900;
+$toc-inactive-border: $gray-300;
+
+
+/*-- scss:rules --*/
+
+// ============================================================
+// GLOBAL
+// ============================================================
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+// ============================================================
+// HEADINGS
+// ============================================================
+h1, h2 {
+  font-family: $font-family-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.level3 {
+  margin-bottom: 1.25rem;
+
+  > h3:first-child {
+    margin-top: 0;
+  }
+
+  > h3 {
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+// ============================================================
+// STICKY ASIDE SECTION TITLES
+// Pulls h2 headings into the left margin and makes them sticky.
+// Uses CSS grid on each .level2 section.
+// ============================================================
+$aside-width: 160px;
+$aside-gap: 2.5em;
+
+#quarto-document-content > section.level2 {
+  display: grid;
+  grid-template-columns: $aside-width 1fr;
+  gap: 0 $aside-gap;
+  margin-left: calc(-#{$aside-width} - #{$aside-gap});
+  width: calc(100% + #{$aside-width} + #{$aside-gap});
+  padding-top: 1.75rem;
+
+  > h2 {
+    grid-column: 1;
+    grid-row: 1 / -1; // Span all rows so sticky works within the section
+    position: sticky;
+    top: 2rem;
+    align-self: start;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 0.75rem;
+    font-family: $font-family-sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: $gray-400;
+    padding-top: 0.2rem;
+    text-align: right;
+    padding-right: 0;
+    line-height: 1.4;
+    border-bottom: none;
+
+    // Hide AnchorJS link on aside-styled h2 — it breaks the right-aligned layout
+    .anchorjs-link {
+      display: none;
+    }
+  }
+
+  // All other children flow into the right (content) column
+  > *:not(h2) {
+    grid-column: 2;
+  }
+
+  // --------------------------------------------------------
+  // PROSE MEASURE — Constrain text-heavy elements to a
+  // narrower column (~85%) so they don't share the same
+  // right edge as full-width blocks (grid, listing).
+  // This breaks the "dented" wall-of-same-width look.
+  // --------------------------------------------------------
+  > section.level3 > p,
+  > section.level3 > ul,
+  > section.level3 > ol,
+  > p,
+  > ul,
+  > ol {
+    max-width: 85%;
+  }
+
+  // First section needs less top padding (hero above provides spacing)
+  &:first-of-type {
+    padding-top: 0;
+  }
+}
+
+// Responsive: collapse to single column on tablet/mobile
+@media (max-width: 991px) {
+  #quarto-document-content > section.level2 {
+    display: block;
+    margin-left: 0;
+    width: 100%;
+    padding-top: 1rem;
+
+    > h2 {
+      position: static;
+      font-size: 1.35rem;
+      font-family: $font-family-serif;
+      font-weight: 600;
+      text-transform: none;
+      letter-spacing: -0.02em;
+      color: $black;
+      text-align: left;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+
+      .anchorjs-link {
+        display: inline;
+      }
+    }
+
+    // Reset prose measure on mobile — full width is fine
+    > section.level3 > p,
+    > section.level3 > ul,
+    > section.level3 > ol,
+    > p,
+    > ul,
+    > ol {
+      max-width: 100%;
+    }
+  }
+}
+
+h3, h4, h5, h6 {
+  font-family: $font-family-serif;
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.35rem;
+}
+
+h6 {
+  font-family: $font-family-sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: $gray-500;
+}
+
+// ============================================================
+// NAVBAR
+// ============================================================
+.navbar {
+  font-family: $font-family-sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  border-bottom: 1px solid $gray-300;
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+  background-color: $white !important;
+
+  .navbar-brand,
+  .navbar-title {
+    font-family: $font-family-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: $black !important;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-link {
+    font-size: 0.875rem;
+    color: $gray-600 !important;
+    padding-left: 0.85rem !important;
+    padding-right: 0.85rem !important;
+    transition: color 0.2s ease;
+    text-decoration: none;
+
+    &:hover {
+      color: $black !important;
+    }
+  }
+
+  .navbar-nav .nav-link.active {
+    color: $black !important;
+  }
+
+  .quarto-navbar-tools {
+    .nav-link {
+      font-size: 1rem;
+      color: $gray-500 !important;
+      text-decoration: none;
+
+      &:hover {
+        color: $black !important;
+      }
+    }
+  }
+}
+
+// ============================================================
+// HERO SECTION
+// ============================================================
+.hero {
+  padding: 2.5rem 0 1.5rem;
+  margin-bottom: 0;
+}
+
+.hero-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+}
+
+.hero-image {
+  flex-shrink: 0;
+  order: 2; // Push image to the right
+
+  @media (max-width: 768px) {
+    order: -1; // Image on top on mobile
+  }
+}
+
+.profile-photo {
+  width: 190px;
+  height: 190px;
+  border-radius: $radius;
+  object-fit: cover;
+  filter: grayscale(15%);
+  border: none;
+  box-shadow: none;
+}
+
+.hero-text {
+  flex: 1;
+  order: 1; // Text on the left
+  padding-top: 0.15rem;
+  margin-bottom: 1.25rem;
+}
+
+.hero-name {
+  font-family: $font-family-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1.1;
+  display: block;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.03em;
+  color: $black;
+
+  @media (max-width: 768px) {
+    font-size: 1.85rem;
+  }
+}
+
+.hero-tagline {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  display: block;
+  color: $gray-700;
+}
+
+// ============================================================
+// SECTION LABELS
+// ============================================================
+.section-label {
+  font-family: $font-family-sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: $gray-500;
+  margin-bottom: 0;
+  margin-top: 1.5rem;
+
+  // Remove gap between label and following h2
+  + section > h2,
+  + .level2 > h2 {
+    margin-top: 0.25rem;
+  }
+}
+
+// ============================================================
+// PAGE TITLE BLOCK
+// ============================================================
+.quarto-title {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $gray-300;
+
+  .title {
+    font-family: $font-family-serif;
+    font-size: 2.25rem;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.35rem;
+
+    @media (max-width: 768px) {
+      font-size: 1.85rem;
+    }
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: $gray-600;
+    font-weight: 400;
+  }
+}
+
+.quarto-title-meta {
+  font-size: 0.85rem;
+  color: $gray-600;
+  margin-top: 0.75rem;
+
+  .quarto-title-meta-heading {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    color: $gray-500;
+  }
+}
+
+// ============================================================
+// CATEGORY BADGES
+// ============================================================
+.quarto-category,
+.listing-category {
+  font-family: $font-family-sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: $gray-500;
+  background-color: transparent;
+  border: 1px solid $gray-300;
+  border-radius: 0;
+  padding: 0.1em 0.45em;
+
+  &:hover {
+    color: $gray-900;
+    border-color: $gray-900;
+  }
+}
+
+// ============================================================
+// LISTINGS
+// ============================================================
+.quarto-listing {
+  margin-top: 0.5rem;
+
+  // Use & to create compound selector since both classes are on same element
+  &.quarto-listing-container-default {
+    margin-right: 0;
+
+    div.quarto-post {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      border-bottom: 1px solid $gray-300;
+      padding: 0.5rem 0;
+      gap: 1rem;
+      margin-bottom: 0;
+
+      // Override Quarto's row-reverse on .image-right
+      &.image-right,
+      &.image-left {
+        flex-direction: row !important;
+      }
+
+      &:first-child {
+        border-top: 1px solid $gray-300;
+      }
+
+      // Title on the left, date on the right
+      .body {
+        flex: 1 1 auto !important;
+        min-width: 0;
+        order: 1;
+      }
+
+      .metadata {
+        flex: 0 0 auto !important;
+        order: 2;
+      }
+
+      // Hide thumbnail if present
+      .thumbnail {
+        display: none;
+      }
+    }
+
+    .listing-title {
+      font-family: $font-family-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.3;
+      color: $gray-900;
+      text-decoration: none;
+      transition: color 0.15s ease;
+      margin-top: 0;
+      margin-bottom: 0;
+
+      &:hover {
+        color: $gray-600;
+      }
+    }
+
+    .listing-description {
+      display: none;
+    }
+
+    .listing-date {
+      font-family: $font-family-sans-serif;
+      font-size: 0.8rem;
+      color: $gray-500;
+      white-space: nowrap;
+    }
+  }
+
+  .quarto-listing-container-grid {
+    .quarto-grid-item {
+      border: 1px solid $gray-300;
+      border-radius: 0;
+      background: $white;
+      transition: border-color 0.2s ease;
+
+      &:hover {
+        border-color: $gray-900;
+      }
+
+      .card-title {
+        font-family: $font-family-serif;
+        font-size: 1.1rem;
+        font-weight: 600;
+        line-height: 1.25;
+        color: $gray-900;
+      }
+
+      .listing-description {
+        color: $gray-600;
+        font-size: 0.875rem;
+        line-height: 1.5;
+      }
+
+      .listing-date {
+        font-family: $font-family-sans-serif;
+        font-size: 0.75rem;
+        color: $gray-500;
+      }
+    }
+  }
+}
+
+#listing-all-stories{
+  margin-top: 0;
+}
+
+// ============================================================
+// BLOCKQUOTES
+// ============================================================
+blockquote {
+  font-family: $font-family-serif;
+  font-size: 1.1rem;
+  line-height: 1.55;
+  color: $gray-700;
+  border-left: 2px solid $gray-900;
+  margin: 1.25rem 0;
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  background: transparent;
+  font-style: italic;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// ============================================================
+// HORIZONTAL RULES
+// ============================================================
+hr {
+  border: 0;
+  height: 1px;
+  background-color: $gray-300;
+  margin: 1.5rem 0;
+}
+
+// ============================================================
+// LINKS
+// ============================================================
+a:not(.nav-link):not(.navbar-brand):not(.quarto-grid-link):not(.listing-title):not(.cta-link):not(.quarto-category):not(.listing-category) {
+  color: $gray-900;
+  text-decoration-color: $gray-400;
+  text-underline-offset: 0.15em;
+  transition: text-decoration-color 0.15s ease;
+
+  &:hover {
+    text-decoration-color: $gray-900;
+  }
+}
+
+// ============================================================
+// CTA LINKS
+// ============================================================
+.cta-block {
+  margin-top: 1rem;
+}
+
+.cta-link {
+  font-family: $font-family-sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: $gray-900;
+  text-decoration: none;
+  border-bottom: 1px solid $gray-900;
+  padding-bottom: 0.15em;
+  transition: all 0.15s ease;
+
+  &:hover {
+    color: $gray-600;
+    border-bottom-color: $gray-600;
+  }
+}
+
+// ============================================================
+// THOUGHT STORY TYPE
+// ============================================================
+.thought {
+  font-family: $font-family-serif;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  color: $gray-800;
+  padding: 1rem 0 1rem 1.25rem;
+  margin: 1rem 0;
+  background-color: transparent;
+  border-left: 2px solid $gray-900;
+  font-style: italic;
+}
+
+// ============================================================
+// DATA STORY
+// ============================================================
+.cell {
+  margin: 1.25rem 0;
+
+  .cell-code {
+    font-family: $font-family-monospace;
+    font-size: 0.85rem;
+    background-color: $gray-100;
+    border: 1px solid $gray-300;
+    border-radius: 0;
+    padding: 1rem;
+  }
+
+  .cell-output-display {
+    margin-top: 0.5rem;
+    border: 1px solid $gray-300;
+    padding: 0.75rem;
+    background: $white;
+  }
+}
+
+pre {
+  background-color: $gray-100;
+  border: 1px solid $gray-300;
+  border-radius: 0;
+  padding: 1rem;
+  font-size: 0.85rem;
+}
+
+code {
+  font-family: $font-family-monospace;
+  font-size: 0.875em;
+}
+
+p code, li code {
+  background-color: $gray-100;
+  padding: 0.1em 0.3em;
+  border-radius: 2px;
+  font-size: 0.85em;
+  color: $gray-800;
+}
+
+// ============================================================
+// IMAGES
+// ============================================================
+.quarto-figure {
+  margin: 1.5rem 0;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .figure-caption {
+    font-family: $font-family-sans-serif;
+    font-size: 0.8rem;
+    color: $gray-500;
+    margin-top: 0.35rem;
+    line-height: 1.5;
+  }
+}
+
+.lightbox img {
+  cursor: zoom-in;
+}
+
+// ============================================================
+// RESEARCH AREAS — 2×2 Grid
+// ============================================================
+#focus-areas {
+  margin-bottom: 0;
+}
+
+.research-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.research-card {
+  padding: 1.25rem;
+  background-color: $white;
+  border: 1px solid $gray-300;
+  border-radius: $radius;
+  margin-bottom: 0; // Override .level3 margin inside grid
+
+  h3 {
+    font-family: $font-family-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    margin-top: 0;
+
+    .anchorjs-link {
+      display: none;
+    }
+  }
+
+  p {
+    color: $gray-600;
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+}
+
+// ============================================================
+// FOOTER
+// Constrain to same width as body content (720px) so the
+// footer aligns with the main content column above.
+// Disable Quarto's sticky footer so it flows after content.
+// ============================================================
+// Quarto uses a combination of html{height:100%}, body flex column,
+// and a grid with 1fr to push the footer to the viewport bottom.
+// Disable this sticky footer so the footer flows after content.
+#quarto-content {
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+footer.footer {
+  position: relative !important;
+}
+
+.nav-footer {
+  font-family: $font-family-sans-serif;
+  font-size: 0.8rem;
+  color: $gray-500;
+  letter-spacing: 0.02em;
+  padding: 1.25rem 0 !important;
+  border-top: 1px solid $gray-300;
+  background-color: $white !important;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+
+  a {
+    color: $gray-500;
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: $gray-900;
+    }
+  }
+}
+
+// ============================================================
+// REFERENCES / BIBLIOGRAPHY
+// ============================================================
+#quarto-appendix {
+  border-top: 1px solid $gray-300;
+  margin-top: 2rem;
+  padding-top: 1rem;
+
+  .quarto-appendix-heading {
+    font-family: $font-family-sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: $gray-500;
+  }
+
+  .csl-entry {
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: $gray-600;
+    padding: 0.3rem 0;
+    border-bottom: 1px solid $gray-200;
+  }
+}
+
+// ============================================================
+// HIGHLIGHT MARKS
+// ============================================================
+mark {
+  background-color: #FFF0C8;
+  color: inherit;
+  padding: 0.1em 0.2em;
+}
+
+// ============================================================
+// LISTS
+// ============================================================
+ul, ol {
+  padding-left: 1.5rem;
+
+  li {
+    margin-bottom: 0.25rem;
+    line-height: 1.6;
+  }
+}
+
+// ============================================================
+// PARAGRAPHS — Tighter spacing
+// ============================================================
+p {
+  margin-bottom: 0.85rem;
+}
+
+// ============================================================
+// RESPONSIVE
+// ============================================================
+@media (max-width: 768px) {
+  .hero {
+    padding: 1.75rem 0 1rem;
+  }
+
+  .profile-photo {
+    width: 110px;
+    height: 110px;
+  }
+
+  .thought {
+    padding: 0.75rem 0 0.75rem 1rem;
+    font-size: 1.15rem;
+  }
+
+  h1, .title {
+    font-size: 1.85rem !important;
+  }
+
+  h2 {
+    font-size: 1.35rem;
+  }
+
+  blockquote {
+    font-size: 1rem;
+    padding-left: 1rem;
+  }
+}
+
+// ============================================================
+// HERO CTAs
+// ============================================================
+.hero-ctas {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-top: 0.25rem;
+}
+
+// ============================================================
+// SUBSCRIBE FORM
+// ============================================================
+.subscribe-form {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+
+  input[type="email"] {
+    font-family: $font-family-sans-serif;
+    font-size: 0.8rem;
+    line-height: 1.3;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: $gray-500;
+    outline: none;
+
+    &::placeholder {
+      color: $gray-400;
+    }
+  }
+
+  button[type="submit"] {
+    font: 500 0.875rem $font-family-sans-serif;
+    line-height: $line-height-base;
+    display: inline;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: transparent;
+    color: $gray-900;
+    cursor: pointer;
+    border-bottom: 1px solid $gray-900;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+
+    &:hover {
+      color: $gray-600;
+      border-bottom-color: $gray-600;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.subscribe-msg {
+  font-family: $font-family-sans-serif;
+  font-size: 0.8rem;
+  color: $gray-500;
+
+  &:empty { display: none; }
+}
+
+// ============================================================
+// SELECTION
+// ============================================================
+::selection {
+  background-color: $gray-200;
+  color: $black;
+}

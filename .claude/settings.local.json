@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:vanschneider.com)",
+      "WebFetch(domain:jessicahische.is)",
+      "WebFetch(domain:www.paullapides.com)",
+      "WebFetch(domain:frankchimero.com)",
+      "WebFetch(domain:stefania11.github.io)",
+      "WebFetch(domain:czonios.github.io)",
+      "WebFetch(domain:jonasoesch.ch)",
+      "WebFetch(domain:www.subtraction.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:quarto.org)",
+      "Bash(make build:*)",
+      "Bash(uv run:*)",
+      "Bash(make publish:*)",
+      "WebFetch(domain:www.nytimes.com)",
+      "Bash(tr:*)",
+      "Bash(grep:*)",
+      "Bash(lsof:*)",
+      "Bash(pkill:*)",
+      "Bash(\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless --disable-gpu --screenshot=/tmp/site-hero.png --window-size=1440,900 \"file:///Users/fred.montet/src/personal/fredmontet/_site/index.html\")",
+      "WebFetch(domain:substack.com)",
+      "WebFetch(domain:fredmontet.substack.com)"
+    ]
+  }
+}

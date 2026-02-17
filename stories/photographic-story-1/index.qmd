@@ -1,0 +1,36 @@
+---
+title: "A Visual Story"
+date: 2024-01-08
+categories: ['pictures']
+lightbox: true
+bibliography: references.bib
+---
+
+## A Visual Story
+
+A narrative told through carefully selected images, each with its own story to tell.
+
+### Image 1: The Beginning
+
+![A meaningful image that sets the scene](images/tmp.jpg){group="my-gallery"}
+
+
+*Caption: Describe what this image captures and why it matters to your story.*
+
+### Image 2: The Journey
+
+![An image that develops the narrative](images/tmp.jpg){group="my-gallery"}
+
+
+*Caption: Explain the significance of this moment or place in your visual journey.*
+
+### Image 3: The Reflection
+
+![A concluding image that brings the story full circle](images/tmp.jpg){group="my-gallery"}
+
+
+*Caption: What does this final image represent? What does it leave you thinking about?*
+
+---
+
+*All images © Fred Montet*

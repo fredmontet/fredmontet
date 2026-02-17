@@ -1,0 +1,10 @@
+---
+title: "A Quick Thought"
+date: 2024-01-15
+categories: ['thought']
+bibliography: references.bib
+---
+
+::: {.thought}
+A fleeting observation, a moment of clarity, or a question worth pondering. Just like a tweet but here on my website. Keep it short, impactful, and thought-provoking.
+:::

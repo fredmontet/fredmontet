@@ -1,0 +1,25 @@
+project:
+  type: website
+  execute-dir: file
+
+execute:
+  python: .venv/bin/python
+
+website:
+  title: "Frédéric Montet"
+  search: false
+  navbar: false
+  page-footer:
+    left: |
+      &copy; 2026 Frédéric Montet
+    right: |
+      [Mail](mailto:fredmontet@gmail.com) · [Instagram](https://www.instagram.com/fredmontet/) · [LinkedIn](https://www.linkedin.com/in/fredmontet)
+
+format:
+  html:
+    theme: [sandstone, theme.scss]
+    page-layout: article
+    grid:
+      body-width: 720px
+      margin-width: 200px
+      gutter-width: 2em

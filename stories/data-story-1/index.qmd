@@ -1,0 +1,53 @@
+---
+title: "First Data Story"
+date: 2024-01-12
+jupyter: python3
+categories: ['research']
+bibliography: references.bib
+---
+
+A mini-paper exploring data with analysis, visualizations, and insights.
+
+### Introduction
+
+Introduce the question or phenomenon you're exploring.
+
+### Data
+
+Describe your data source and methodology.
+
+```{python}
+import pandas as pd
+import altair as alt
+import numpy as np
+
+# Load or create your data here
+data = pd.DataFrame({
+    'x': np.random.randn(100),
+    'y': np.random.randn(100)
+})
+```
+
+### Analysis
+
+Present your findings with interactive visualizations.
+
+```{python}
+# Create an interactive plot with Altair
+chart = alt.Chart(data).mark_point().encode(
+    x='x:Q',
+    y='y:Q',
+    color='x:Q'
+).interactive()
+
+chart
+```
+
+### Insights
+
+Discuss what you discovered and why it matters.
+
+### References
+
+- Reference 1
+- Reference 2

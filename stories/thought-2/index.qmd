@@ -1,0 +1,9 @@
+---
+title: "A Quick Thought 2"
+date: 2024-01-10
+categories: ['thought']
+---
+
+::: {.thought}
+A fleeting observation 2, a moment of clarity, or a question worth pondering. Just like a tweet but here on my website. Keep it short, impactful, and thought-provoking.
+:::

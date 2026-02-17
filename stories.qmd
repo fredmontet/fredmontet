@@ -1,0 +1,18 @@
+---
+title: "Stories"
+subtitle: "Thoughts, narratives, data explorations, and photographic journeys."
+listing:
+    id: all-stories
+    contents: stories
+    type: grid
+    sort: "date desc"
+    fields: [date, title, categories, description]
+    max-description-length: 120
+    categories: true
+    page-size: 12
+    date-format: "medium"
+    grid-columns: 2
+    grid-item-border: true
+    exclude:
+        categories: ["thought"]
+---
