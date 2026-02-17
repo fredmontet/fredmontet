@@ -9,20 +9,21 @@ help:
 	@echo "  make dev       - Sync and start preview"
 	@echo "  make publish   - Clean and build for deployment"
 
+clean:
+	rm -rf _site .quarto
+
+sync:
+	uv sync
+
 preview:
 	uv run quarto preview
 
 build:
 	uv run quarto render
 
-sync:
-	uv sync
-
-clean:
-	rm -rf _site .quarto
+publish:
+	uv run quarto publish
 
 dev: sync preview
-
-publish: clean build
 
 .DEFAULT_GOAL := help
