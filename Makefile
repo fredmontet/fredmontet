@@ -22,7 +22,7 @@ build:
 	uv run quarto render
 
 publish:
-	uv run quarto publish
+	uv run quarto publish --no-prompt --no-browser
 
 dev: sync preview
 
