@@ -20,51 +20,16 @@ listing:
 
 [Frédéric Montet]{.hero-name}
 
-[Computer science researcher creating data solutions for nature and people. Fascinated by movement, dance, mountains and paragliding.]{.hero-tagline}
+[Computer science researcher creating data solutions for nature and people. I am fascinated by movement, mountains and paragliding.]{.hero-tagline}
 
 :::{.hero-ctas}
 
-[Mail](mailto:fredmontet@gmail.com){.cta-link}
-
-<form id="subscribe-form" class="subscribe-form">
-<span class="subscribe-msg" id="subscribe-msg"></span>
-<button type="submit">Subscribe</button>
-<input type="email" name="email" placeholder="Your email" required>
-</form>
-
-:::
-
-<script>
-document.getElementById('subscribe-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  var form = this;
-  var msg = document.getElementById('subscribe-msg');
-  var input = form.querySelector('input');
-  var btn = form.querySelector('button');
-  btn.disabled = true;
-  btn.textContent = 'Subscribing…';
-  fetch('https://fredmontet.substack.com/api/v1/free', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    body: 'email=' + encodeURIComponent(form.email.value),
-    mode: 'no-cors'
-  }).then(function() {
-    msg.textContent = 'Thank you for subscribing!';
-    input.style.display = 'none';
-    btn.style.display = 'none';
-  }).catch(function() {
-    msg.textContent = 'Something went wrong';
-    btn.disabled = false;
-    btn.textContent = 'Subscribe';
-  });
-});
-</script>
-
-:::
+[Mail](mailto:simplelogin-newsletter.arrive061@simplelogin.com){.cta-link}
 
 :::
 :::
-
+:::
+:::
 
 ## Writing {#writing}
 
@@ -79,28 +44,28 @@ document.getElementById('subscribe-form').addEventListener('submit', function(e)
 
 ### Focus Areas
 
-My academic work focuses on **data science** applied to real-world problems for the benefit of the **environment**.
+My academic work focuses on **data science** applied to real-world problems for the benefit of our **environment** given four axes:
 
 :::: {.research-grid}
 
 ::: {.research-card}
 ### Built Environment
-Energy efficiency, building optimization, and smart buildings
+Scalable building energy modeling and district heating network anomalies.
 :::
 
 ::: {.research-card}
-### Energy Systems
-Modeling consumption patterns, forecasting, and anomaly detection
+### Environmental Metrics
+Measuring ecosystem health, change, and risk, from spatiotemporal data.
 :::
 
 ::: {.research-card}
-### Time Series Modeling
-Advanced forecasting, pattern recognition, and temporal analysis
+### Temporal Modeling
+Time series analysis, advanced forecasting and pattern recognition.
 :::
 
 ::: {.research-card}
-### Anomaly Detection
-Systems and applications for real-world data streams
+### Spatial Modeling
+Geodata processing and modelling with raster, vector or photogrammetry. 
 :::
 
 ::::
@@ -116,14 +81,22 @@ I was fortunate to be guided by the following professors:
 
 - [Jean Hennebert](https://people.hes-so.ch/en/profile/198587651-jean-hennebert) from [HEIA-FR](https://www.heia-fr.ch) — PhD co-supervisor
 - [Philippe Cudré-Mauroux](https://www.unifr.ch/directory/fr/people/10710/c0027) from [UNIFR](https://www.unifr.ch/) — PhD co-supervisor
-- [Jean-Philippe Bacher](https://people.hes-so.ch/fr/profile/683897247-jean-philippe-bacher) from HEIA-FR — energy guidance
-- [Marcus Liwicki](https://www.ltu.se/en/staff/m/marcus-liwicki) from [LTU](https://www.ltu.se/) — host at LTU, northern Sweden
+- [Jean-Philippe Bacher](https://people.hes-so.ch/fr/profile/683897247-jean-philippe-bacher) from [HEIA-FR](https://www.heia-fr.ch) — Energy guidance
+- [Marcus Liwicki](https://www.ltu.se/en/staff/m/marcus-liwicki) from [LTU](https://www.ltu.se/) — Host in Northern Sweden
 
 ## About {#about}
 
 ### Short Bio
 
-I am a computer science researcher with a passion for applying data science to real-world problems, particularly in the context of environmental sustainability. My work focuses on developing innovative solutions that leverage data to optimize energy systems, enhance building efficiency, and contribute to a more sustainable future.
+My name is Fred Montet, I am a computer science researcher from Switzerland.
+
+From an apprenticeship in mechatronics to a doctoral degree in computer science, my education enables me to understand practical problems and deliver pragmatic solutions.
+
+Since 2015, I have run several self-employed ventures—from a small creative agency to paragliding tandem flights—to support my academic work. During this time, I collaborated with partners including Groupe E, Richemont, Raiffeisen and SBB; most Swiss-French cantons; as well as some start-ups and universities.
+
+With the support of my professors, we co-created applied research projects involving multiple stakeholders and needs. In these projects, I coordinated the work of several scientific collaborators.
+
+I admire work that demands design literacy, movement, and of course, most activities in mountains and nature.
 
 [Read my CV](assets/fred-montet-cv.pdf){.cta-link download="fred-montet-cv.pdf"}
 
